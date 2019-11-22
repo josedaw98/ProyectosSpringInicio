@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--  
+Codigo para imprimir un atributo suelto
+
+<h1>Bienvenido</h1>
+<p th:text="'Hola' +  ${nombre} + 'Bienvenido'">mi Nombre</p>
+<p th:text="'Tu edad es : ' + ${edad}"> 24</p>
+-->
+
+
+<!-- Imprimir un objeto  
+<p th:text="'Mira, un autor en mi web ' + ${autor.nombre}">colleja</p>
+<p th:text="'Autor, tu edad es :  ' + ${autor.edad}">colleja</p>
+<p th:text="'Autor, tu email es ' + ${autor.email}">colleja</p>
+-->
+
+<!-- SACAR EB FORMA DE LISTA 
+<h1>Lista de autores</h1>
+<ol >
+	<li th:each="unAutor : ${autores}"
+		th:text="${unAutor.nombre} + ' - ' + ${unAutor.edad} + ' - ' + ${unAutor.email}">nombre
+	</li>
+
+</ol>
+
+-->
+<table border="1">
+	<h1>Lista de autores</h1>
+      <tr>
+      	<th>ID</th>
+        <th>NOMBRE</th>
+        <th>EDAD</th>
+        <th>CORREO</th>
+      </tr>
+      <tr th:each="autor : ${autores}">
+      	<td th:text="${autor.id}">Onions</td>
+        <td th:text="${autor.nombre}">Onions</td>
+        <td th:text="${autor.edad}">2.41</td>
+        <td th:text="${autor.email}">yes</td>
+      </tr>
+    </table>
+
+</html>
