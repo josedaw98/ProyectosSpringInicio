@@ -32,12 +32,14 @@ Codigo para imprimir un atributo suelto
         <th>NOMBRE</th>
         <th>EDAD</th>
         <th>CORREO</th>
+        <th></th>
       </tr>
       <tr th:each="autor : ${autores}">
       	<td th:text="${autor.id}">Onions</td>
         <td th:text="${autor.nombre}">Onions</td>
         <td th:text="${autor.edad}">2.41</td>
         <td th:text="${autor.email}">yes</td>
+        <td>Detalle</td>
       </tr>
     </table>
 
