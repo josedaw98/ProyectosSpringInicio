@@ -1,7 +1,6 @@
 package com.jose.IniciandoSpring.beans;
 
 public class AutorBean {
-	
 	private int id;
 	private String nombre;
 	private int edad;
@@ -10,11 +9,20 @@ public class AutorBean {
 	
 	
 	
+	
+	
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getNombre() {
 		return nombre;
@@ -27,12 +35,6 @@ public class AutorBean {
 	}
 	public void setEdad(int edad) {
 		this.edad = edad;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	
 
