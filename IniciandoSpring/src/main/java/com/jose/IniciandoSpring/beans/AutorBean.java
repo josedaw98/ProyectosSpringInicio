@@ -37,5 +37,11 @@ public class AutorBean {
 		this.edad = edad;
 	}
 	
+	@Override
+	public String toString() {
+		return "AutorBean [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", email=" + email + "]";
+	}
+	
 
+	
 }
