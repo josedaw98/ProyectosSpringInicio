@@ -32,6 +32,7 @@ Codigo para imprimir un atributo suelto
         <th>NOMBRE</th>
         <th>EDAD</th>
         <th>CORREO</th>
+        <th>coche</th>
         <th>detalles</th>
         <th>eliminar</th>
         <th>actualizar</th>
@@ -41,6 +42,7 @@ Codigo para imprimir un atributo suelto
         <td th:text="${autor.nombre}">Onions</td>
         <td th:text="${autor.edad}">2.41</td>
         <td th:text="${autor.email}">yes</td>
+        <td th:each="cocheOpt:${coches}" th:if="${autor.coche} == ${cocheOpt.id}" th:text="${cocheOpt.marca}">yes</td>
         <td><a href="#" th:href="@{/autores/{id}(id=${autor.id})}">Detalle</a></td>
         <td><a href="#" th:href="@{/eliminar/{id}(id=${autor.id})}">eliminar</a></td>
         <td><a href="#" th:href="@{/actualizarAutor/{id}(id=${autor.id})}">Actualizar autor</a></td>

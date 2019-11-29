@@ -1,5 +1,6 @@
 package com.jose.IniciandoSpring.rutas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter.Indenter;
 import com.jose.IniciandoSpring.beans.AutorBean;
+import com.jose.IniciandoSpring.beans.CocheBean;
 import com.jose.IniciandoSpring.beans.ListaAutores;
 
 @Controller
@@ -44,6 +46,10 @@ public class RutasBasicas {
 	@GetMapping("/")
 	public String rutaBasicaInicial(Model model) {
 		
+		ArrayList<CocheBean> ListaCoches = CrearListaCoche();
+		
+		model.addAttribute("coches",ListaCoches);//creamos un objeto de nuevo cochey los añadimo al modelo para poder rellenarlo
+		
 		//ListaAutores lista = ListaAutores.getLista();//LLAMAMOS AL SINGLETON
 		model.addAttribute("autores",lista.getDatos());
 
@@ -69,6 +75,9 @@ public class RutasBasicas {
 	public String actualizarAutor(Model model , @PathVariable Integer id) {
 		//ListaAutores lista = ListaAutores.getLista();
 		AutorBean autor = lista.getAutor(id);
+		ArrayList<CocheBean> ListaCoches = CrearListaCoche();
+		
+		model.addAttribute("coches",ListaCoches);//creamos un objeto de nuevo cochey los añadimo al modelo para poder rellenarlo
 		
 		model.addAttribute("autor",autor);//creamos un objeto de nuevo autor y los añadimo al modelo para poder rellenarlo
 		
@@ -89,12 +98,19 @@ public class RutasBasicas {
 	
 	@GetMapping("/nuevoAutor")
 	public String nuevoAutor(Model model) {
+		ArrayList<CocheBean> ListaCoches = CrearListaCoche();
 		
+		model.addAttribute("coches",ListaCoches);//creamos un objeto de nuevo cochey los añadimo al modelo para poder rellenarlo
 		model.addAttribute("autor",new AutorBean());//creamos un objeto de nuevo autor y los añadimo al modelo para poder rellenarlo
 		
 		return "nuevoAutor";//html formulario nuevo autor 		
 		
 	}
+
+
+
+
+
 	
 	
 	@PostMapping("/addAutor")//post por que envia mucha informacion
@@ -131,12 +147,29 @@ public class RutasBasicas {
 	}	
 
 	
+
+/**
+ * crea una lista y les añade coches
+ * @return devuelve la lista de coches
+ */
+
+private ArrayList<CocheBean> CrearListaCoche() {
+	ArrayList<CocheBean> ListaCoches  = new ArrayList<CocheBean>();
+	CocheBean volvo = new CocheBean();
+	volvo.setId(1);
+	volvo.setMarca("volvo");
+	
+	CocheBean ford = new CocheBean();
+	ford.setId(2);
+	ford.setMarca("ford");
+	
+	ListaCoches.add(volvo);
+	ListaCoches.add(ford);
+	
+	return ListaCoches;
 }
 
-
-
-
-
+}
 
 
 /*
