@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter.Indenter;
 import com.jose.IniciandoSpring.beans.AutorBean;
@@ -44,16 +45,25 @@ public class RutasBasicas {
 	
 	/*LISTA AUTORES*/
 	@GetMapping("/")
-	public String rutaBasicaInicial(Model model) {
+	public ModelAndView rutaBasicaInicial() {
+		
+		
 		
 		ArrayList<CocheBean> ListaCoches = CrearListaCoche();
 		
-		model.addAttribute("coches",ListaCoches);//creamos un objeto de nuevo cochey los añadimo al modelo para poder rellenarlo
+		//creamos el modelAndView
+		ModelAndView model = new ModelAndView("hola");
+		
+		//creamos un objeto de nuevo cochey los añadimo al modelo para poder rellenarlo
+		model.addObject("coches",ListaCoches);
 		
 		//ListaAutores lista = ListaAutores.getLista();//LLAMAMOS AL SINGLETON
-		model.addAttribute("autores",lista.getDatos());
-
-		return "hola";
+		model.addObject("autores",lista.getDatos());
+		
+		//Añadimos un nombre y una persona 
+		model.addObject("nombre","jose");
+ 
+		return model;
 	}
 	
 	

@@ -25,30 +25,61 @@ Codigo para imprimir un atributo suelto
 </ol>
 
 -->
-<table border="1">
+
+<p>Informacion lista autores</p>
+<ul>
+	<li th:text="${#lists.size(autores)}"></li>
+	<li th:text="${#lists.isEmpty(autores)}"></li>
+</ul>
+
+<div th:switch="${#lists.isEmpty(autores)}">
+
+	<div id="noHayNadie" th:case="true">
+
+		<p>
+			la lista esta vacia <a href="#" th:href="@{/nuevoAutor}">Agregar autor</a>
+	
+	
+	</div>
+	
+	<div id="hayAutores" th:case="false">
+	
+		<table border="1">
 	<h1>Lista de autores</h1>
-      <tr>
-      	<th>ID</th>
-        <th>NOMBRE</th>
-        <th>EDAD</th>
-        <th>CORREO</th>
-        <th>coche</th>
-        <th>detalles</th>
-        <th>eliminar</th>
-        <th>actualizar</th>
-      </tr>
-      <tr th:each="autor : ${autores}">
-      	<td th:text="${autor.id}">Onions</td>
-        <td th:text="${autor.nombre}">Onions</td>
-        <td th:text="${autor.edad}">2.41</td>
-        <td th:text="${autor.email}">yes</td>
-        <td th:each="cocheOpt:${coches}" th:if="${autor.coche} == ${cocheOpt.id}" th:text="${cocheOpt.marca}">yes</td>
-        <td><a href="#" th:href="@{/autores/{id}(id=${autor.id})}">Detalle</a></td>
-        <td><a href="#" th:href="@{/eliminar/{id}(id=${autor.id})}">eliminar</a></td>
-        <td><a href="#" th:href="@{/actualizarAutor/{id}(id=${autor.id})}">Actualizar autor</a></td>
-      </tr>
-    </table>
-    <a href="#" th:href="@{/nuevoAutor}">Agregar autor</a>
-    
+	<tr>
+		<th>ID</th>
+		<th>NOMBRE</th>
+		<th>EDAD</th>
+		<th>CORREO</th>
+		<th>coche</th>
+		<th>detalles</th>
+		<th>eliminar</th>
+		<th>actualizar</th>
+	</tr>
+	<tr th:each="autor : ${autores}">
+		<td th:text="${autor.id}">Onions</td>
+		<td th:text="${autor.nombre}">Onions</td>
+		<td th:text="${autor.edad}">2.41</td>
+		<td th:text="${autor.email}">yes</td>
+		<td th:each="cocheOpt:${coches}"
+					th:if="${autor.coche} == ${cocheOpt.id}"
+					th:text="${cocheOpt.marca}">yes</td>
+		<td><a href="#" th:href="@{/autores/{id}(id=${autor.id})}">Detalle</a></td>
+		<td><a href="#" th:href="@{/eliminar/{id}(id=${autor.id})}">eliminar</a></td>
+		<td><a href="#"
+					th:href="@{/actualizarAutor/{id}(id=${autor.id})}">Actualizar
+				autor</a></td>
+	</tr>
+</table>
+
+
+	
+	</div>
+	
+</div>
+
+
+
+
 
 </html>
