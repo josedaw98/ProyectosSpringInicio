@@ -8,24 +8,48 @@
 	<h1>Nuevo autor</h1>
 
 
-    <form action="#" th:action="@{/addAutor}" th:object="${autor}" method="post">
-    	
-    	
-    	<p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-        <p>Edad: <input type="text" th:field="*{edad}" /></p>
-        <p>Email: <input type="email" th:field="*{email}" /></p>
-        
-        <p>
-        	<select th:field="*{coche}">
-        		<option th:each="cocheOpt:${coches}" th:value="${cocheOpt.id}" th:text="${cocheOpt.marca}"/>
-        	</select>
-        </p>
-        
-        
-        
-        <p><input type="submit" value="Submit" />
-           <input type="reset" value="Reset" /></p>
-    </form>
+	<form action="#" th:action="@{/addAutor}" th:object="${autor}"
+		method="post">
+
+
+		<p>
+			Nombre: <input type="text" th:field="*{nombre}" />
+		</p>
+		<p>
+			Edad: <input type="text" th:field="*{edad}" />
+		</p>
+		<p>
+			Email: <input type="email" th:field="*{email}" />
+		</p>
+
+		<p>
+			<select th:field="*{coche}">
+				<option th:each="cocheOpt:${coches}" th:value="${cocheOpt.id}"
+					th:text="${cocheOpt.marca}" />
+			</select>
+		</p>
+
+		<p>
+			<textarea  rows="6" cols="10" th:field="*{mensaje}">
+    		</textarea>
+		</p>
+		
+		<p>
+			<input type="range" name="points" min="0" max="10" th:field="*{rango}"/>
+		</p>
+		
+		<p>
+			<input type="checkbox" name="carnet" th:field="*{carnetConducir}">¿Tienes Carnet de conducir?
+		</p>
+
+
+
+
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+	</form>
 
 
 </body>

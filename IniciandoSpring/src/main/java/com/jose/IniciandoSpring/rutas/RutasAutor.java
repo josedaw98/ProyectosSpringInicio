@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ import com.jose.IniciandoSpring.beans.CocheBean;
 import com.jose.IniciandoSpring.beans.ListaAutores;
 
 @Controller
-public class RutasBasicas {
+public class RutasAutor {
 	
 	ListaAutores lista = ListaAutores.getLista();
 /*
@@ -45,7 +46,14 @@ public class RutasBasicas {
 	
 	/*LISTA AUTORES*/
 	@GetMapping("/")
-	public ModelAndView rutaBasicaInicial() {
+	public String RutaInicial() {
+		
+ 
+		return "Inicial";
+	}
+	
+	@GetMapping("/autores")
+	public ModelAndView rutaBasicaAtores() {
 		
 		
 		
@@ -102,7 +110,7 @@ public class RutasBasicas {
 		
 		lista.updateAutor(autor);
 		
-		return "redirect:/"; 		
+		return "redirect:/autores"; 		
 		
 	}
 	
@@ -130,7 +138,7 @@ public class RutasBasicas {
 		//ListaAutores lista = ListaAutores.getLista();
 		lista.AddAutor(autor);
 		
-		return "redirect:/"; 		
+		return "redirect:/autores"; 		
 		
 	}
 	
@@ -138,6 +146,26 @@ public class RutasBasicas {
 	
 	
 	@GetMapping("/eliminar/{id}")
+	public String deleteAutor(	@PathVariable Integer id,
+									Model model) {
+		
+		//ListaAutores lista = ListaAutores.getLista();
+		lista.del(id);
+		
+		/*  
+		 * ME LO CURRO YO
+		 *
+		model.addAttribute("autores",lista.getDatos());
+		
+		return "hola"; //html
+		
+		*/
+		
+		return ("redirect:/autores");//redireccionamos a la ruta que queremos 
+	}
+	
+	
+	@DeleteMapping("/autor/{id}")
 	public String eliminarAutor(	@PathVariable Integer id,
 									Model model) {
 		
@@ -153,9 +181,8 @@ public class RutasBasicas {
 		
 		*/
 		
-		return ("redirect:/");//redireccionamos a la ruta que queremos 
-	}	
-
+		return ("200");//redireccionamos a la ruta que queremos 
+	}
 	
 
 /**

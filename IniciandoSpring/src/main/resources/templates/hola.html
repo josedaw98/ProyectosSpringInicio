@@ -26,56 +26,62 @@ Codigo para imprimir un atributo suelto
 
 -->
 
-<p>Informacion lista autores</p>
-<ul>
-	<li th:text="${#lists.size(autores)}"></li>
-	<li th:text="${#lists.isEmpty(autores)}"></li>
-</ul>
+<h1>Informacion lista autores</h1>
+
+<p>
+	<a href="#" th:href="@{/nuevoAutor}">Agregar autor</a>
+</p>
 
 <div th:switch="${#lists.isEmpty(autores)}">
 
 	<div id="noHayNadie" th:case="true">
 
-		<p>
-			la lista esta vacia <a href="#" th:href="@{/nuevoAutor}">Agregar autor</a>
-	
-	
+		<h1>No hay autores en la lisa</h1>
+
 	</div>
-	
+
 	<div id="hayAutores" th:case="false">
-	
+
 		<table border="1">
-	<h1>Lista de autores</h1>
-	<tr>
-		<th>ID</th>
-		<th>NOMBRE</th>
-		<th>EDAD</th>
-		<th>CORREO</th>
-		<th>coche</th>
-		<th>detalles</th>
-		<th>eliminar</th>
-		<th>actualizar</th>
-	</tr>
-	<tr th:each="autor : ${autores}">
-		<td th:text="${autor.id}">Onions</td>
-		<td th:text="${autor.nombre}">Onions</td>
-		<td th:text="${autor.edad}">2.41</td>
-		<td th:text="${autor.email}">yes</td>
-		<td th:each="cocheOpt:${coches}"
+			<h1>Lista de autores</h1>
+			<tr>
+				<th>ID</th>
+				<th>NOMBRE</th>
+				<th>EDAD</th>
+				<th>CORREO</th>
+				<th>coche</th>
+				<th>mensaje</th>
+				<th>Rango</th>
+				<th>Carnet conducir</th>
+				<th>detalles</th>
+				<th>eliminar</th>
+				<th>actualizar</th>
+			</tr>
+			<tr th:each="autor : ${autores}">
+				<td th:text="${autor.id}">Onions</td>
+				<td th:text="${autor.nombre}">Onions</td>
+				<td th:text="${autor.edad}">2.41</td>
+				<td th:text="${autor.email}">yes</td>
+				<td th:each="cocheOpt:${coches}"
 					th:if="${autor.coche} == ${cocheOpt.id}"
 					th:text="${cocheOpt.marca}">yes</td>
-		<td><a href="#" th:href="@{/autores/{id}(id=${autor.id})}">Detalle</a></td>
-		<td><a href="#" th:href="@{/eliminar/{id}(id=${autor.id})}">eliminar</a></td>
-		<td><a href="#"
+				<td th:text="${autor.mensaje}"></td>
+				<td th:text="${autor.rango}"></td>
+				<td th:if="${autor.carnetConducir}" th:text="'tengo carnet'">hola</td>
+				<td	th:unless="${autor.carnetConducir}" th:text="'no tengo carnet'">hola</td>
+				<td><a href="#" th:href="@{/autores/{id}(id=${autor.id})}">Detalle</a></td>
+				<td><a href="#" th:href="@{/eliminar/{id}(id=${autor.id})}">eliminar</a></td>
+				<td><a href="#"
 					th:href="@{/actualizarAutor/{id}(id=${autor.id})}">Actualizar
-				autor</a></td>
-	</tr>
-</table>
+						autor</a></td>
+
+			</tr>
+		</table>
 
 
-	
+
 	</div>
-	
+
 </div>
 
 

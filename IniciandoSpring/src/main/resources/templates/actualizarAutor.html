@@ -21,6 +21,19 @@
         	</select>
         </p>
         
+		<p>
+			<textarea  rows="6" cols="20" th:field="*{mensaje}">
+    		</textarea>
+		</p>
+		
+		<p>
+			<input type="range" name="points" min="0" max="10" th:field="*{rango}"/>
+		</p>
+		
+		<p>
+			<input type="checkbox" name="carnet"  th:field="*{carnetConducir}">
+		</p>
+        
         <p><input type="submit" value="Submit" />
            <input type="reset" value="Reset" /></p>
     </form>

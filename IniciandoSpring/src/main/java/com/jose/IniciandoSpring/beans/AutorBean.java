@@ -6,6 +6,9 @@ public class AutorBean {
 	private Integer edad;
 	private String email;
 	private String coche;
+	private String mensaje;
+	private Integer rango;
+	private boolean carnetConducir;
 	
 	
 	
@@ -13,6 +16,27 @@ public class AutorBean {
 	
 	
 
+	public boolean isCarnetConducir() {
+		return carnetConducir;
+	}
+	public void setCarnetConducir(boolean carnetConducir) {
+		this.carnetConducir = carnetConducir;
+	}
+	public Integer getRango() {
+		return rango;
+	}
+	public void setRango(Integer rango) {
+		this.rango = rango;
+	}
+	public String getMensaje() {
+		return mensaje;
+	}
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
 	public String getCoche() {
 		return coche;
 	}

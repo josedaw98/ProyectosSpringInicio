@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<h1>Informacion lista Coches</h1>
+
+
+<div th:switch="${#lists.isEmpty(coches)}">
+
+	<div id="noHayNadie" th:case="true">
+
+		<h1>No hay autores en la lisa</h1>
+
+	</div>
+
+	<div id="hayAutores" th:case="false">
+
+		<table border="1">
+			<h1>Lista de Coches</h1>
+			<tr>
+				<th>ID</th>
+				<th>MARCA</th>
+				<th>DUEÑO</th>
+				<th>PRECIO</th>
+				<th>VALORACION</th>
+			</tr>
+			<tr th:each="coche : ${coches}">
+				<td th:text="${coche.id}">Onions</td>
+				<td th:text="${coche.marca}">Onions</td>
+				<td th:text="${coche.precio}">2.41</td>
+			</tr>
+		</table>
+
+	</div>
+
+</div>
+
+<h1>AÑADIR COCHE</h1>
+		<form action="#" th:action="@{/coches}" th:object="${coche}"
+			method="get">
+
+
+			<p>
+				MARCA: <input type="text" th:field="*{marca}" />
+			</p>
+			<p>
+				PRECIO: <input type="text" th:field="*{precio}" />
+			</p>
+
+		</form>
+
+
+
+</html>
